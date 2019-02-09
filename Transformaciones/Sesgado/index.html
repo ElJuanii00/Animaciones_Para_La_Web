@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Transformaciones/Translate</title>
+    <style media="screen">
+      body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: white;
+        font-family: arial;
+      }
+
+      .container{
+        border: 1px solid red;
+      }
+
+      .container:hover .cuadrado{
+        /* transform: skew(x,y); */
+        /* transform: skew(45deg , 45deg); */
+        transform: skew(10deg , 10deg);
+      }
+
+      .cuadrado{
+        width: 200px;
+        height: 200px;
+        background: #7dc900;
+        margin: 20px;
+        transition: .3s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cuadrado"> Hola Mundo</div>
+    </div>
+  </body>
+</html>
