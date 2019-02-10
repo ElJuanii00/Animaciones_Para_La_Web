@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Puerta</title>
+    <style media="screen">
+
+      body{
+        margin: 0;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        /* height: 1vh; */
+      }
+
+      h1{
+        font-family: Arial;
+        color: brown;
+        font-size: 5em;
+        font-weight: bold;
+        margin: 1em 0;
+      }
+
+      .container{
+        width: 100%;
+        /* height: 100vh; */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+      }
+
+      .marco{
+        margin: 0;
+        width: 248px;
+        height: 450px;
+        border: 5px solid gray;
+        position: relative;
+        perspective-origin: center;
+        perspective: 750px;
+      }
+
+      .door{
+        transition: .3s;
+      }
+
+      .marco:hover .door.a{
+        transform-origin: right;
+        transform: rotateY(-90deg);
+      }
+
+      .marco:hover .door.b{
+        transform-origin: right;
+        transform: rotateY(90deg);
+      }
+
+      .marco:hover .door.c{
+        transform-origin: right;
+        transform: rotateY(-90deg);
+      }
+
+      .door.a, .door.b, .door.c{
+        position: absolute;
+        /* display: none; */
+      }
+
+      .paisaje.a, .paisaje.b, .paisaje.c{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Magic Doors</h1>
+    <div class="container">
+      <div class="marco">
+        <img class="paisaje a" src="paisaje_1.jpg" alt="">
+        <img class="door a" src="puerta.jpg" alt="">
+      </div>
+      <div class="marco">
+        <img class="paisaje b" src="paisaje_2.jpg" alt="">
+        <img class="door b" src="puerta.jpg" alt="">
+      </div>
+      <div class="marco">
+        <img class="paisaje c" src="paisaje_3.jpg" alt="">
+        <img class="door c" src="puerta.jpg" alt="">
+      </div>
+    </div>
+  </body>
+</html>
