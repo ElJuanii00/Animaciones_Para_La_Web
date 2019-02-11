@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>As Deck</title>
+    <style media="screen">
+
+      body{
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        height: 100vh;
+        background-image: url(tapete_cartas.jpg);
+      }
+
+      .container{
+        border: 1px solid white;
+        border-radius: 50px;
+        margin: 50px;
+        width: 1000px;
+        height: calc(750px - 100px - 2px);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas: "As_corazones welcome welcome As_trebol"
+                             "As_picas welcome welcome As_rombos";
+        flex-wrap: wrap;
+
+        perspective: 1000px;
+        perspective-origin: center;
+        position: relative;
+        /* justify-items: center;
+        align-items: center; */
+      }
+
+      .carta{
+        width: 140px;
+        height: 200px;
+        object-fit: cover;
+        /* margin: 25px; */
+        border-radius: 10px;
+        animation-name: entrada;
+        /* animation-duration: 5s; */
+        animation-timing-function: linear;
+        animation-iteration-count: 1, infinite;
+        justify-self: center;
+        align-self: center;
+      }
+
+      .container:hover .carta{
+        animation-play-state: paused;
+      }
+
+      @keyframes As_corazones {
+        from{
+          transform: translate(calc(500px - (250px / 2)), calc(-500px + -300px));
+          /* grid-template-areas: "As_corazones . . As_trebol" */
+                               /* "As_picas . . As_rombos"; */
+        }
+
+        80%{
+          transform: translate(calc(500px - (250px / 2)), 0);
+        }
+
+        to{
+          transform: translate(0);
+          /* grid-template-areas: "As_corazones As_picas As_rombos As_trebol" */
+                               /* ". . . ."; */
+        }
+      }
+
+      @keyframes As_trebol {
+        from{
+          transform: translate(calc(-500px + (250px / 2)), calc(-500px + 0px));
+          /* grid-template-areas: "As_corazones . . As_trebol" */
+                               /* "As_picas . . As_rombos"; */
+        }
+
+        60%{
+          transform: translate(calc(-500px + (250px / 2)), 0);
+        }
+
+        to{
+          transform: translate(0);
+          /* grid-template-areas: "As_corazones As_picas As_rombos As_trebol" */
+                               /* ". . . ."; */
+        }
+      }
+
+      @keyframes As_picas {
+        from{
+          transform: translate(calc(500px - (250px / 2)), calc(-500px + -300px));
+          /* grid-template-areas: "As_corazones . . As_trebol" */
+                               /* "As_picas . . As_rombos"; */
+        }
+
+        50%{
+          transform: translate(calc(500px - (250px / 2)), 0);
+        }
+
+        to{
+          transform: translate(0);
+          /* grid-template-areas: "As_corazones As_picas As_rombos As_trebol" */
+                               /* ". . . ."; */
+        }
+      }
+
+      @keyframes As_rombos {
+        from{
+          transform: translate(calc(-500px + (250px / 2)), calc(-500px + 0px));
+          /* grid-template-areas: "As_corazones . . As_trebol" */
+                               /* "As_picas . . As_rombos"; */
+        }
+
+        30%{
+          transform: translate(calc(-500px + (250px / 2)), 0);
+        }
+
+        to{
+          transform: translate(0);
+          /* grid-template-areas: "As_corazones As_picas As_rombos As_trebol" */
+                               /* ". . . ."; */
+        }
+      }
+
+      @keyframes welcome {
+        from{
+          transform: rotateX(90deg) translateY(0px);
+          color: rgba(255, 255, 255, 0);
+        }
+
+        to{
+          transform: rotateX(0deg) translateY(0px);
+          color: rgba(255, 255, 255, 1);
+        }
+      }
+
+      .As_corazones{
+        grid-area: As_corazones;
+        animation-name: As_corazones;
+        animation-duration: 4s;
+      }
+
+      .As_trebol{
+        grid-area: As_trebol;
+        animation-name: As_trebol;
+        animation-duration: 3s;
+      }
+
+      .As_picas{
+        grid-area: As_picas;
+        animation-name: As_picas;
+        animation-duration: 3s;
+      }
+
+      .As_rombos{
+        grid-area: As_rombos;
+        animation-name: As_rombos;
+        animation-duration: 2s;
+      }
+
+      .welcome{
+        position: absolute;
+        justify-self: center;
+        align-self: center;
+      }
+
+      .welcome.intro{
+        grid-area: welcome;
+        margin: 0;
+        font-family: Arial;
+        font-size: 8rem;
+        font-weight: bold;
+        color: white;
+        animation-iteration-count: 2;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+        animation-direction: alternate;
+        display: none;
+        /* display: none; */
+        color: rgba(255, 255, 255, 0);
+      }
+
+      .welcome.message1, .welcome.message2{
+        font-family: Arial;
+        font-size: 6rem;
+        font-weight: bold;
+        color: white;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+        /* display: none; */
+        color: rgba(255, 255, 255, 0);
+      }
+
+      .welcome.message1{
+        grid-area: welcome;
+        top: 0;
+        /* margin-top: 25px; */
+        margin: 65px 0 0 0;
+        text-align: center;
+        display: none;
+      }
+
+      .welcome.message2{
+        grid-area: welcome;
+        bottom: 0;
+        /* margin-bottom: 25px; */
+        margin: 0 0 65px 0;
+        text-align: center;
+        display: none;
+      }
+
+      @keyframes credit1 {
+        from{
+          transform: rotateX(-90deg);
+          display: block;
+        }
+
+        50%{
+          transform: rotateX(0deg);
+          color: rgba(255, 255, 255, 1);
+        }
+
+        to{
+          transform: rotateX(0deg);
+          color: rgba(255, 255, 255, 1);
+        }
+      }
+
+      @keyframes credit2 {
+        from{
+          transform: rotateX(90deg);
+          display: block;
+        }
+
+        50%{
+          transform: rotateX(90deg);
+          color: rgba(255, 255, 255, 0);
+        }
+
+        to{
+          transform: rotateX(0deg);
+          color: rgba(255, 255, 255, 1);
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img class="carta As_corazones" id="card-heart" src="As_corazones.png" alt="">
+      <img class="carta As_picas"  src="As_picas.png" alt="">
+      <img class="carta As_rombos" src="As_rombos.png" alt="">
+      <img class="carta As_trebol" src="As_trebol.png" alt="">
+      <h1 class="welcome intro" id="welcome">Welcome</h1>
+      <h1 class="welcome message1" id="credit1">Made by:</h1>
+      <h1 class="welcome message2" id="credit2">Juan Ponce</h1>
+    </div>
+    <script type="text/javascript">
+      const carta = document.getElementById('card-heart');
+      const welcome = document.getElementById('welcome');
+      const message1 = document.getElementById('credit1');
+      const message2 = document.getElementById('credit2');
+      carta.addEventListener('animationend', (event) =>{
+        console.log(event.animationName);
+        if(event.animationName === 'As_corazones'){
+          welcome.style.display = 'block';
+          welcome.style.animationName = 'welcome';
+          welcome.style.animationDuration = '2s';
+          welcome.addEventListener('animationend', (event) => {
+            if(event.animationName === 'welcome'){
+              welcome.style.display = 'none';
+              message1.style.display = 'block';
+              message2.style.display = 'block';
+              message1.style.animationName = 'credit1';
+              message1.style.animationDuration = '4s';
+              message2.style.animationName = 'credit2';
+              message2.style.animationDuration = '4s';
+            }
+          })
+        }
+      });
+    </script>
+  </body>
+</html>
