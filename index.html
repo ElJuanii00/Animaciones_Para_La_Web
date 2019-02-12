@@ -12,7 +12,7 @@
         align-items: flex-start;
         width: 100%;
         height: 100vh;
-        background-image: url(tapete_cartas.jpg);
+        background-image: url(As_Deck_Anim/tapete_cartas.jpg);
       }
 
       .container{
@@ -20,7 +20,7 @@
         border-radius: 50px;
         margin: 50px;
         width: 1000px;
-        height: calc(750px - 100px - 2px);
+        height: 650px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
@@ -41,16 +41,103 @@
         object-fit: cover;
         /* margin: 25px; */
         border-radius: 10px;
-        animation-name: entrada;
         /* animation-duration: 5s; */
         animation-timing-function: linear;
-        animation-iteration-count: 1, infinite;
+        animation-iteration-count: 1;
         justify-self: center;
         align-self: center;
       }
 
       .container:hover .carta{
         animation-play-state: paused;
+      }
+
+      @keyframes salida_As_Corazones {
+        from{
+          transform: translate(0);
+        }
+
+        25%{
+          transform: translate(calc(1000px - calc(250px - 140px) - 140px), 0);
+        }
+
+        50%{
+          transform: translate(calc(1000px - calc(250px - 140px) - 140px), calc(650px - calc(calc(650px / 2) - 200px) - 200px));
+        }
+
+        75%{
+          transform: translate(0, calc(650px - calc(calc(650px / 2) - 200px) - 200px));
+        }
+
+        to{
+          transform: translate(0);
+        }
+      }
+
+      @keyframes salida_As_Trebol {
+        from{
+          transform: translateY(0);
+        }
+
+        25%{
+          transform: translate(0, calc(650px - calc(calc(650px / 2) - 200px) - 200px));
+        }
+
+        50%{
+          transform: translate(calc(-1000px + calc(250px - 140px) + 140px), calc(650px - calc(calc(650px / 2) - 200px) - 200px));
+        }
+
+        75%{
+          transform: translate(calc(-1000px + calc(250px - 140px) + 140px), 0);
+        }
+
+        to{
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes salida_As_Picas {
+        from{
+          transform: translate(0);
+        }
+
+        25%{
+          transform: translate(0, calc(-650px + calc(calc(650px / 2) - 200px) + 200px))
+        }
+
+        50%{
+          transform: translate(calc(1000px - calc(250px - 140px) - 140px), calc(-650px + calc(calc(650px / 2) - 200px) + 200px));
+        }
+
+        75%{
+          transform: translate(calc(1000px - calc(250px - 140px) - 140px), 0)
+        }
+
+        to{
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes salida_As_Rombos {
+        from{
+          transform: translate(0);
+        }
+
+        25%{
+          transform: translate(calc(-1000px + calc(250px - 140px) + 140px), 0);
+        }
+
+        50%{
+          transform: translate(calc(-1000px + calc(250px - 140px) + 140px), calc(-650px + calc(calc(650px / 2) - 200px) + 200px));
+        }
+
+        75%{
+          transform: translate(0 , calc(-650px + calc(calc(650px / 2) - 200px) + 200px));
+        }
+
+        to{
+          transform: translate(0);
+        }
       }
 
       @keyframes As_corazones {
@@ -188,8 +275,9 @@
         font-size: 6rem;
         font-weight: bold;
         color: white;
-        animation-iteration-count: 1;
+        animation-iteration-count: 2;
         animation-timing-function: ease-in-out;
+        animation-direction: alternate;
         animation-fill-mode: forwards;
         /* display: none; */
         color: rgba(255, 255, 255, 0);
@@ -207,21 +295,15 @@
       .welcome.message2{
         grid-area: welcome;
         bottom: 0;
-        /* margin-bottom: 25px; */
         margin: 0 0 65px 0;
         text-align: center;
+        animation-delay: 1s;
         display: none;
       }
 
       @keyframes credit1 {
         from{
           transform: rotateX(-90deg);
-          display: block;
-        }
-
-        50%{
-          transform: rotateX(0deg);
-          color: rgba(255, 255, 255, 1);
         }
 
         to{
@@ -233,12 +315,6 @@
       @keyframes credit2 {
         from{
           transform: rotateX(90deg);
-          display: block;
-        }
-
-        50%{
-          transform: rotateX(90deg);
-          color: rgba(255, 255, 255, 0);
         }
 
         to{
@@ -251,20 +327,23 @@
   </head>
   <body>
     <div class="container">
-      <img class="carta As_corazones" id="card-heart" src="As_corazones.png" alt="">
-      <img class="carta As_picas"  src="As_picas.png" alt="">
-      <img class="carta As_rombos" src="As_rombos.png" alt="">
-      <img class="carta As_trebol" src="As_trebol.png" alt="">
+      <img class="carta As_corazones" id="card-heart" src="As_Deck_Anim/As_corazon.png" alt="">
+      <img class="carta As_picas" id="card-picas" src="As_Deck_Anim/As_pica.png" alt="">
+      <img class="carta As_rombos" id="card-rombos" src="As_Deck_Anim/As_rombo.png" alt="">
+      <img class="carta As_trebol" id="card-trebol" src="As_Deck_Anim/As_trebol.png" alt="">
       <h1 class="welcome intro" id="welcome">Welcome</h1>
       <h1 class="welcome message1" id="credit1">Made by:</h1>
-      <h1 class="welcome message2" id="credit2">Juan Ponce</h1>
+      <h1 class="welcome message2" id="credit2">ElJuanii00</h1>
     </div>
     <script type="text/javascript">
-      const carta = document.getElementById('card-heart');
+      const carta_heart = document.getElementById('card-heart');
+      const carta_picas = document.getElementById('card-picas');
+      const carta_rombos = document.getElementById('card-rombos');
+      const carta_trebol = document.getElementById('card-trebol');
       const welcome = document.getElementById('welcome');
       const message1 = document.getElementById('credit1');
       const message2 = document.getElementById('credit2');
-      carta.addEventListener('animationend', (event) =>{
+      carta_heart.addEventListener('animationend', (event) =>{
         console.log(event.animationName);
         if(event.animationName === 'As_corazones'){
           welcome.style.display = 'block';
@@ -276,9 +355,29 @@
               message1.style.display = 'block';
               message2.style.display = 'block';
               message1.style.animationName = 'credit1';
-              message1.style.animationDuration = '4s';
+              message1.style.animationDuration = '2s';
               message2.style.animationName = 'credit2';
-              message2.style.animationDuration = '4s';
+              message2.style.animationDuration = '2s';
+              message2.addEventListener('animationend', (event) => {
+                if(event.animationName = 'credit2'){
+                  carta_heart.style.animationName = "salida_As_Corazones";
+                  carta_heart.style.animationDuration = "4s";
+                  carta_heart.style.animationIterationCount = "infinite";
+                  carta_heart.style.animationTimingFunction = "ease-in-out";
+                  carta_trebol.style.animationName = "salida_As_Trebol";
+                  carta_trebol.style.animationDuration = "4s";
+                  carta_trebol.style.animationIterationCount = "infinite";
+                  carta_trebol.style.animationTimingFunction = "ease-in-out";
+                  carta_picas.style.animationName = "salida_As_Picas";
+                  carta_picas.style.animationDuration = "4s";
+                  carta_picas.style.animationIterationCount = "infinite";
+                  carta_picas.style.animationTimingFunction = "ease-in-out";
+                  carta_rombos.style.animationName = "salida_As_Rombos";
+                  carta_rombos.style.animationDuration = "4s";
+                  carta_rombos.style.animationIterationCount = "infinite";
+                  carta_rombos.style.animationTimingFunction = "ease-in-out";
+                }
+              })
             }
           })
         }
