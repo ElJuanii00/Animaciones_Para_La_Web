@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Twitter Like</title>
+    <style media="screen">
+      body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        height: 100vh;
+      }
+
+      .like{
+        cursor: pointer;
+        /* width: 100px;
+        height: 100px; */
+        width: 50px;
+        height: 50px;
+        /* background: red; */
+        background-image: url(twitter_like.png);
+        background-size: 1450px 50px;
+      }
+
+      .like.is_Liked{
+        animation-name: like;
+        animation-duration: .8s;
+        animation-timing-function: steps(28);
+        /* background-position: -2800px 0; */
+        /* background-position: right; */
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes like {
+        0%{
+          /* transform: translateX(0px); */
+          background-position: 0 0;
+        }
+
+        100%{
+          /* transform: translateX(200px); */
+          background-position: right;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tweet-box">
+      <div class="like" id="like">
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    const like = document.getElementById('like');
+    like.addEventListener('click', (event) =>{
+      // console.log(event);
+      // like.classList.add('is_Liked');
+      like.classList.toggle('is_Liked');
+    });
+  </script>
+</html>

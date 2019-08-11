@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Charging Screen</title>
+    <link rel="stylesheet" href="css/master.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="box" id="box">
+        <div class="right_box" id="right_box"></div>
+        <div class="left_box" id="left_box"></div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    const left_box1 = document.getElementById('left_box');
+    // const left_box2 = document.getElementById('left_box');
+    const right_box1 = document.getElementById('right_box');
+    const box = document.getElementById('box');
+
+    box.addEventListener('animationend', (event) => {
+      left_box1.style.animation = 'left_box_anim1 .4s ease-in forwards';
+
+      right_box1.style.animation = 'right_box_anim1 .4s ease-in .2s forwards';
+      right_box1.addEventListener('animationend', (event) => {
+
+      })
+      left_box1.addEventListener('animationend', (event) => {
+        left_box1.style.animation = 'left_box_anim2 .4s ease-in forwards';
+        console.log(left_box1.style.animation);
+      })
+    })
+  </script>
+</html>
